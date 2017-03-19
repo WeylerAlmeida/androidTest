@@ -11,6 +11,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,16 +32,17 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 3; i++){
             if (login_atual.equals(logins[i])){
                 if (senha_atual.equals(senhas[i])){
-                    troca();
-                    break;
+                    troca(login_atual, senha_atual);
                 }
             }
         }
 
     }
 
-    public void troca () {
+    public void troca (String login, String senha) {
         Intent page2 = new Intent(MainActivity.this,Page2.class);
+        page2.putExtra("Login", login);
+        page2.putExtra("Senha", senha);
         startActivity(page2);
     }
 }
